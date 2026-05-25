@@ -5,8 +5,11 @@ export interface Product {
   description: string;
   price: number;
   image: string;
-  type: 'live-tray' | 'fresh-cut';
+  type: 'live-tray' | 'fresh-cut' | 'fruit';
   benefits: string[];
+  category: 'microgreens' | 'fruits';
+  emoji?: string;
+  badge?: string;
 }
 
 export interface Benefit {
@@ -24,4 +27,11 @@ export interface RecommendationResponse {
   suggestedGreens: string[];
   reasoning: string;
   usageTips: string;
+}
+
+export interface Review {
+  name: string;
+  text: string;
+  rating: number;
+  handle: string;
 }

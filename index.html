@@ -1,78 +1,88 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prakriti Greens | Premium Living Superfoods</title>
+    <title>Prakriti Greens & Naturals | Premium Microgreens, Alphonso Mangoes & Indian Blackberry</title>
+    <meta name="description" content="Prakriti Greens — premium organic microgreens, Alphonso mangoes, and Indian blackberry (Jambhul). Farm fresh, zero pesticides, delivered to your door.">
+    <link rel="icon" type="image/png" href="/leaves.png" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         :root {
-            --emerald-glow: 0 0 30px rgba(74, 222, 128, 0.15);
+            --emerald-glow: 0 0 30px rgba(82, 196, 26, 0.15);
+            --amber-glow: 0 0 30px rgba(251, 191, 36, 0.15);
+            --violet-glow: 0 0 30px rgba(139, 92, 246, 0.15);
         }
-        body { 
-            font-family: 'Inter', sans-serif; 
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
             background-color: #050805;
             color: #e5e7eb;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
+
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
-        .text-neon-green { color: #4ade80; }
-        .bg-emerald-glass {
-            background: rgba(5, 8, 5, 0.8);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(74, 222, 128, 0.1);
-        }
-        .product-card {
-            background: linear-gradient(145deg, #0d120d, #080b08);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-        }
-        .product-card:hover {
-            border-color: rgba(74, 222, 128, 0.4);
-            transform: translateY(-12px);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), var(--emerald-glow);
-        }
+
+        /* ── Scrollbar ─────────────────────────────────── */
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #050805; }
         ::-webkit-scrollbar-thumb { background: #1a2e1a; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #4ade80; }
-        
-        @keyframes float {
-            0% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(5deg); }
-            100% { transform: translateY(0px) rotate(0deg); }
-        }
-        .floating-leaf {
-            animation: float 8s ease-in-out infinite;
-        }
+        ::-webkit-scrollbar-thumb:hover { background: #52c41a; }
+
+        /* ── Selection ─────────────────────────────────── */
+        ::selection { background: rgba(82,196,26,0.3); color: #fff; }
+
+        /* ── Utility ───────────────────────────────────── */
+        .text-neon-green { color: #52c41a; }
+
+        /* ── Smooth Scroll ─────────────────────────────── */
+        html { scroll-behavior: smooth; }
 
         /* Prevent Layout Shift */
         #root { min-height: 100vh; }
+
+        /* ── Animated gradient text ────────────────────── */
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #52c41a, #a0d911, #fbbf24, #8b5cf6, #52c41a);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-shift 6s ease infinite;
+        }
     </style>
-<script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@19.0.0",
-    "react-dom": "https://esm.sh/react-dom@19.0.0",
-    "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
-    "framer-motion": "https://esm.sh/framer-motion@11.11.11?external=react,react-dom",
-    "lucide-react": "https://esm.sh/lucide-react@0.454.0?external=react",
-    "@google/genai": "https://esm.sh/@google/genai@1.3.0",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react/": "https://esm.sh/react@^19.2.3/"
-  }
-}
-</script>
-<link rel="stylesheet" href="/index.css">
+    <script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react@19.0.0",
+        "react-dom": "https://esm.sh/react-dom@19.0.0",
+        "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
+        "framer-motion": "https://esm.sh/framer-motion@11.11.11?external=react,react-dom",
+        "lucide-react": "https://esm.sh/lucide-react@0.454.0?external=react",
+        "@google/genai": "https://esm.sh/@google/genai@1.3.0",
+        "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+        "react/": "https://esm.sh/react@^19.2.3/"
+      }
+    }
+    </script>
+    <link rel="stylesheet" href="/index.css">
 </head>
 <body>
     <div id="root"></div>
-<script type="module" src="/index.tsx"></script>
+    <script type="module" src="/index.tsx"></script>
 </body>
 </html>
