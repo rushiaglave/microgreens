@@ -3,45 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Prakriti Greens & Naturals | Premium Microgreens, Alphonso Mangoes & Indian Blackberry</title>
-    <meta name="description" content="Prakriti Greens — premium organic microgreens, Alphonso mangoes, and Indian blackberry (Jambhul). Farm fresh, zero pesticides, delivered to your door.">
+    <meta name="theme-color" content="#0b2b1e">
+    <title>Prakriti Greens | Living Microgreens, Fresh Cut Veggies & Ready-to-Cook Containers</title>
+    <meta name="description" content="Prakriti Greens — living microgreens, ozone pre-washed cut vegetables, and ready-to-cook meal kits in sealed airtight containers. Farm-fresh, zero pesticides, zero prep.">
     <link rel="icon" type="image/png" href="/leaves.png" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         :root {
-            --emerald-glow: 0 0 30px rgba(82, 196, 26, 0.15);
-            --amber-glow: 0 0 30px rgba(251, 191, 36, 0.15);
-            --violet-glow: 0 0 30px rgba(139, 92, 246, 0.15);
+            --forest-green: #0b2b1e;
+            --leaf-green: #15803d;
+            --emerald-light: #dcfce7;
+            --mango-gold: #d97706;
+            --mango-light: #fef3c7;
+            --jambhul-purple: #7e22ce;
+            --jambhul-light: #f3e8ff;
+            --surface-bg: #faf9f5;
+            --surface-card: #ffffff;
+            --border-light: #e2e8f0;
+            --text-dark: #18181b;
+            --text-slate: #4b5563;
+            --nav-height: 72px;
+            --announce-height: 40px;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #050805;
-            color: #e5e7eb;
+            font-family: 'Inter', 'Outfit', sans-serif;
+            background-color: var(--surface-bg);
+            color: var(--text-dark);
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
         }
 
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
 
         /* ── Scrollbar ─────────────────────────────────── */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #050805; }
-        ::-webkit-scrollbar-thumb { background: #1a2e1a; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #52c41a; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #faf9f5; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; border: 2px solid #faf9f5; }
+        ::-webkit-scrollbar-thumb:hover { background: #15803d; }
 
         /* ── Selection ─────────────────────────────────── */
-        ::selection { background: rgba(82,196,26,0.3); color: #fff; }
+        ::selection { background: rgba(21, 128, 61, 0.15); color: #0b2b1e; }
 
         /* ── Utility ───────────────────────────────────── */
-        .text-neon-green { color: #52c41a; }
+        .text-neon-green { color: #15803d; }
 
         /* ── Smooth Scroll ─────────────────────────────── */
         html { scroll-behavior: smooth; }
@@ -57,28 +70,163 @@
         }
 
         .gradient-text {
-            background: linear-gradient(135deg, #52c41a, #a0d911, #fbbf24, #8b5cf6, #52c41a);
-            background-size: 300% 300%;
+            background: linear-gradient(135deg, #0b2b1e, #15803d, #047857);
+            background-size: 200% 200%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             animation: gradient-shift 6s ease infinite;
         }
+
+        /* ── Shimmer Animation ─────────────────────────── */
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        .shimmer {
+            background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.15) 50%, transparent 100%);
+            background-size: 200% 100%;
+            animation: shimmer 2.5s ease-in-out infinite;
+        }
+
+        /* ── Pulse Glow ────────────────────────────────── */
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 4px 20px rgba(126,34,206,0.12); }
+            50% { box-shadow: 0 6px 30px rgba(126,34,206,0.25); }
+        }
+        .pulse-glow-purple {
+            animation: pulse-glow 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow-green {
+            0%, 100% { box-shadow: 0 4px 20px rgba(21,128,61,0.12); }
+            50% { box-shadow: 0 6px 30px rgba(21,128,61,0.25); }
+        }
+        .pulse-glow-green {
+            animation: pulse-glow-green 3s ease-in-out infinite;
+        }
+
+        /* ── Marquee ───────────────────────────────────── */
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .marquee-track {
+            animation: marquee 25s linear infinite;
+        }
+        .marquee-track:hover {
+            animation-play-state: paused;
+        }
+
+        /* ── Subtle Card Border ────────────────────────── */
+        .gradient-border-wrap {
+            background: linear-gradient(135deg, rgba(21,128,61,0.2), rgba(126,34,206,0.15), rgba(217,119,6,0.2));
+            padding: 1px;
+            border-radius: 2rem;
+        }
+        .gradient-border-wrap > * {
+            border-radius: calc(2rem - 1px);
+        }
+
+        /* ── Gentle Float ──────────────────────────────── */
+        @keyframes float-gentle {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+        .float-gentle {
+            animation: float-gentle 4s ease-in-out infinite;
+        }
+
+        /* ── Glass Card ────────────────────────────────── */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* ── Dot Grid Pattern ──────────────────────────── */
+        .dot-grid {
+            background-image: radial-gradient(rgba(21, 128, 61, 0.08) 1.2px, transparent 1.2px);
+            background-size: 24px 24px;
+        }
+
+        /* ── Line clamp utility ────────────────────────── */
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .line-clamp-3 {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* ── Hide scrollbar for horizontal scroll ──────── */
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+
+        /* ── Touch-friendly targets ────────────────────── */
+        @media (max-width: 768px) {
+            button, a, input, select, textarea {
+                min-height: 44px;
+            }
+            .mobile-full { width: 100% !important; }
+            .mobile-stack { flex-direction: column !important; }
+            .mobile-text-center { text-align: center !important; }
+            .mobile-px { padding-left: 1rem !important; padding-right: 1rem !important; }
+        }
+
+        /* ── Snap scroll for mobile carousel ───────────── */
+        .snap-x-mandatory {
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+        .snap-center {
+            scroll-snap-align: center;
+        }
+
+        /* ── Animated underline ────────────────────────── */
+        .animated-underline {
+            position: relative;
+        }
+        .animated-underline::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #15803d;
+            transition: width 0.3s ease;
+        }
+        .animated-underline:hover::after {
+            width: 100%;
+        }
+
+        /* ── Stat counter card ─────────────────────────── */
+        .stat-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 1.5rem;
+            padding: 1.5rem 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px -2px rgba(0, 0, 0, 0.03);
+        }
+        .stat-card:hover {
+            border-color: rgba(21, 128, 61, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px -5px rgba(21, 128, 61, 0.08);
+        }
     </style>
-    <script type="importmap">
-    {
-      "imports": {
-        "react": "https://esm.sh/react@19.0.0",
-        "react-dom": "https://esm.sh/react-dom@19.0.0",
-        "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
-        "framer-motion": "https://esm.sh/framer-motion@11.11.11?external=react,react-dom",
-        "lucide-react": "https://esm.sh/lucide-react@0.454.0?external=react",
-        "@google/genai": "https://esm.sh/@google/genai@1.3.0",
-        "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-        "react/": "https://esm.sh/react@^19.2.3/"
-      }
-    }
-    </script>
     <link rel="stylesheet" href="/index.css">
 </head>
 <body>

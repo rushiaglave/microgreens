@@ -5,12 +5,17 @@ export interface Product {
   description: string;
   price: number;
   image: string;
-  type: 'live-tray' | 'fresh-cut' | 'fruit';
+  type: 'live-tray' | 'fresh-cut' | 'fruit' | 'vegetable' | 'packed-container' | 'ready-to-cook-kit';
   benefits: string[];
-  category: 'microgreens' | 'fruits';
+  category: 'microgreens' | 'cut-vegetables' | 'ready-to-cook' | 'fruits' | 'vegetables';
+  containerType?: string;
+  weight?: string;
+  prepTime?: string;
   emoji?: string;
   badge?: string;
+  inStock?: boolean;
 }
+
 
 export interface Benefit {
   title: string;

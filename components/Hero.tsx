@@ -1,242 +1,256 @@
-import React from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { WHATSAPP_NUMBER } from '../constants';
 
-const Hero = () => {
-  const { scrollY } = useScroll();
+const HERO_FEATURED = [
+  {
+    id: 'cut-veggies',
+    tabLabel: '🍱 Cut Veggies',
+    name: 'Gourmet Stir-Fry Veggie Mix',
+    price: '₹240',
+    unit: '550g sealed tub',
+    badge: '🍱 Airtight Sealed Container',
+    badgeBg: 'bg-emerald-100 text-emerald-800 border-emerald-200',
+    btnBg: 'bg-[#15803d] hover:bg-[#166534] text-white',
+    image: '/cut_veggies_pack.jpg',
+    containerInfo: 'Ozone-sanitized, precision-diced bell peppers, broccoli florets, baby corn, carrots & zucchini. 100% pre-washed and ready for the pan.',
+    meta: ['Zero Peeling', 'Airtight Lock', 'Serves 2-3'],
+  },
+  {
+    id: 'ready-to-cook',
+    tabLabel: '🍳 Ready to Cook',
+    name: 'Paneer & Veggie Stir-Fry Chef Kit',
+    price: '₹320',
+    unit: '600g divided kit',
+    badge: '⚡ 10-Min Ready to Cook',
+    badgeBg: 'bg-amber-100 text-amber-900 border-amber-200',
+    btnBg: 'bg-amber-600 hover:bg-amber-700 text-white',
+    image: '/ready_to_cook_container.jpg',
+    containerInfo: 'Divided sealed container with fresh paneer cubes, chopped crisp veggies, culinary sauce cup, and living microgreens garnish.',
+    meta: ['Cook in 8 Mins', 'Microgreens Garnish', 'Serves 2'],
+  },
+  {
+    id: 'microgreens',
+    tabLabel: '🌱 Microgreens',
+    name: 'Royal Sango Radish Living Tray',
+    price: '₹350',
+    unit: 'living tray',
+    badge: '🌱 40X Nutrient Density',
+    badgeBg: 'bg-emerald-100 text-emerald-800 border-emerald-200',
+    btnBg: 'bg-[#15803d] hover:bg-[#166534] text-white',
+    image: '/Radish.png',
+    containerInfo: 'Arrives alive with intact roots. Snip seconds before eating for maximum antioxidant enzyme absorption and fresh peppery crunch.',
+    meta: ['Live Roots', '20+ Servings', 'Zero Nutrient Decay'],
+  },
+  {
+    id: 'seasonal',
+    tabLabel: '🫐 Seasonal Fruit',
+    name: 'Indian Blackberry (Jambhul)',
+    price: '₹299',
+    unit: 'per kg box',
+    badge: '🌧️ Monsoon Harvest Active',
+    badgeBg: 'bg-purple-100 text-purple-800 border-purple-200',
+    btnBg: 'bg-purple-700 hover:bg-purple-800 text-white',
+    image: '/jambhul_3d.png',
+    containerInfo: 'Hand-picked peak monsoon harvest from Maharashtra orchards. Naturally low glycemic index, dense with anthocyanins and organic iron.',
+    meta: ['Wild Harvested', 'Maharashtra Orchards', 'Limited Batch'],
+  },
+];
 
-  // Parallax for floating elements
-  const leaf1Y = useTransform(scrollY, [0, 1000], [0, 350]);
-  const leaf1Rotate = useTransform(scrollY, [0, 1000], [0, 180]);
-  const leaf2Y = useTransform(scrollY, [0, 1000], [0, -280]);
-  const leaf2Rotate = useTransform(scrollY, [0, 1000], [45, -90]);
-
-  // 3D floating fruits on scroll
-  const mangoY = useTransform(scrollY, [0, 800], [0, 200]);
-  const mangoRotate = useTransform(scrollY, [0, 800], [0, 25]);
-  const jambhulY = useTransform(scrollY, [0, 800], [0, -150]);
-  const jambhulRotate = useTransform(scrollY, [0, 800], [0, -20]);
+const Hero: React.FC = () => {
+  const [activeTab, setActiveTab] = useState(0);
+  const featured = HERO_FEATURED[activeTab];
 
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      style={{ background: '#040608' }}
+      className="relative min-h-[92vh] flex items-center justify-center overflow-hidden bg-[#faf9f5] py-12 md:py-20"
     >
-      {/* ── Floating Microgreens ── */}
-      <motion.img
-        style={{ y: leaf1Y, rotate: leaf1Rotate }}
-        src="/microgreen2.png"
-        alt=""
-        className="absolute top-20 left-[6%] w-24 h-24 md:w-40 md:h-40 opacity-[0.07] z-20 pointer-events-none"
-      />
-      <motion.img
-        style={{ y: leaf2Y, rotate: leaf2Rotate }}
-        src="/microgreen.png"
-        alt=""
-        className="absolute bottom-32 right-[5%] w-20 h-20 md:w-36 md:h-36 opacity-[0.06] z-20 pointer-events-none"
-      />
+      {/* Background Pattern */}
+      <div className="absolute inset-0 dot-grid opacity-30 pointer-events-none z-[1]" />
 
-      {/* ── 3D Floating Mango (scroll-driven) ── */}
-      <motion.div
-        style={{ y: mangoY, rotate: mangoRotate }}
-        className="absolute bottom-[15%] left-[3%] md:left-[8%] z-10 pointer-events-none"
-      >
-        <motion.img
-          src="/mango_3d.png"
-          alt="Mango"
-          className="w-28 h-28 md:w-48 md:h-48 object-contain"
-          animate={{ y: [0, -20, 0], rotate: [0, 5, 0] }}
-          transition={{ repeat: Infinity, duration: 5, ease: 'easeInOut' }}
-          style={{ filter: 'drop-shadow(0 20px 40px rgba(251,191,36,0.45))' }}
-        />
-      </motion.div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
 
-      {/* ── 3D Floating Jambhul (scroll-driven) ── */}
-      <motion.div
-        style={{ y: jambhulY, rotate: jambhulRotate }}
-        className="absolute top-[20%] right-[3%] md:right-[8%] z-10 pointer-events-none"
-      >
-        <motion.img
-          src="/jambhul_3d.png"
-          alt="Jambhul"
-          className="w-24 h-24 md:w-40 md:h-40 object-contain"
-          animate={{ y: [0, 18, 0], rotate: [0, -6, 0] }}
-          transition={{ repeat: Infinity, duration: 6, ease: 'easeInOut', delay: 1 }}
-          style={{ filter: 'drop-shadow(0 20px 40px rgba(139,92,246,0.45))' }}
-        />
-      </motion.div>
-
-      {/* ── Background Layers ── */}
-      <div className="absolute inset-0 z-0">
-        <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-[#040608]/70 to-[#050805] z-10" />
-        <motion.img
-          initial={{ scale: 1.1, opacity: 0 }}
-          animate={{ scale: 1, opacity: 0.5 }}
-          transition={{ duration: 2.8, ease: [0.22, 1, 0.36, 1] }}
-          src="/hero_bg.png"
-          alt="Fresh vibrant microgreens"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(4,6,8,0.5)_70%,rgba(4,6,8,0.95)_100%)] z-[8]" />
-      </div>
-
-      {/* ── Hero Content ── */}
-      <div className="relative z-10 text-center px-6 max-w-7xl mx-auto py-20">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-        >
-          {/* Trust Badge */}
+          {/* ── LEFT COLUMN: Value Proposition & CTAs (7 Cols) ── */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="inline-flex items-center gap-3 px-6 py-2.5 rounded-full border border-[#52c41a]/30 mb-8"
-            style={{ background: 'rgba(45,80,22,0.15)', backdropFilter: 'blur(8px)' }}
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-7 text-left"
           >
-            <div className="w-2 h-2 rounded-full bg-[#a0d911] animate-pulse" />
-            <span className="text-[#a0d911] text-[10px] md:text-[11px] font-semibold uppercase tracking-[0.3em]">
-              Certified Organic · Farm Fresh Daily
-            </span>
-          </motion.div>
+            {/* Tag / Quality Badge */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-emerald-200 bg-emerald-50 text-[#15803d] text-xs font-bold uppercase tracking-wider mb-5 font-[Outfit] shadow-2xs">
+              <span className="w-2 h-2 rounded-full bg-[#15803d] animate-pulse" />
+              Pre-Washed • Ozone Sanitized • Airtight Containers
+            </div>
 
-          {/* Category Pills */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.65 }}
-            className="flex justify-center gap-3 mb-8 flex-wrap"
-          >
-            {[
-              { label: '🌱 Microgreens', color: '#52c41a' },
-              { label: '🥭 Alphonso Mango', color: '#fbbf24' },
-              { label: '🫐 Indian Blackberry', color: '#8b5cf6' },
-            ].map(({ label, color }) => (
-              <span
-                key={label}
-                className="px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-widest"
-                style={{
-                  background: color + '15',
-                  color,
-                  border: `1px solid ${color}40`,
-                }}
+            {/* Main Headline */}
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif font-bold text-[#0b2b1e] leading-[1.12] tracking-tight mb-5">
+              Fresh Microgreens & <br />
+              <span className="text-[#15803d] italic font-normal">Ready-to-Cook</span> Cut Veggies.
+            </h1>
+
+            {/* Subheadline */}
+            <p className="text-base sm:text-lg text-slate-600 font-normal leading-relaxed mb-6 max-w-2xl">
+              Farm-harvested living microgreen trays and precision-cut vegetables sealed in airtight food-grade containers. No peeling, no chopping, and zero waste effortless 10-minute gourmet nutrition delivered directly to your doorstep.
+            </p>
+
+            {/* Container Highlights Grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-8">
+              <div className="bg-white/80 border border-slate-200/80 rounded-xl p-3 shadow-2xs">
+                <div className="flex items-center gap-2 text-[#15803d] font-bold text-xs uppercase tracking-wide font-[Outfit] mb-1">
+                  <i className="fa-solid fa-box-open" />
+                  <span>Airtight Packs</span>
+                </div>
+                <p className="text-[11px] text-slate-500 leading-tight">Food-grade sealed containers lock in moisture & crunch</p>
+              </div>
+
+              <div className="bg-white/80 border border-slate-200/80 rounded-xl p-3 shadow-2xs">
+                <div className="flex items-center gap-2 text-[#15803d] font-bold text-xs uppercase tracking-wide font-[Outfit] mb-1">
+                  <i className="fa-solid fa-seedling" />
+                  <span>40× Microgreens</span>
+                </div>
+                <p className="text-[11px] text-slate-500 leading-tight">Living root trays for fresh kitchen harvesting</p>
+              </div>
+
+              <div className="bg-white/80 border border-slate-200/80 rounded-xl p-3 shadow-2xs col-span-2 sm:col-span-1">
+                <div className="flex items-center gap-2 text-[#15803d] font-bold text-xs uppercase tracking-wide font-[Outfit] mb-1">
+                  <i className="fa-solid fa-stopwatch" />
+                  <span>Zero Prep Work</span>
+                </div>
+                <p className="text-[11px] text-slate-500 leading-tight">Washed, cut, ready to toss straight into the pan</p>
+              </div>
+            </div>
+
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch sm:items-center mb-8">
+              <a
+                href="#products"
+                className="px-7 py-3.5 bg-[#15803d] hover:bg-[#166534] text-white rounded-full font-bold text-xs sm:text-sm uppercase tracking-wider transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center gap-2.5 font-[Outfit]"
               >
-                {label}
-              </span>
-            ))}
+                <span>View Packed Containers & Greens</span>
+                <i className="fa-solid fa-arrow-down text-xs" />
+              </a>
+
+              <a
+                href="#assistant"
+                className="px-6 py-3.5 bg-white border border-slate-200 hover:border-[#15803d] text-[#0b2b1e] rounded-full font-semibold text-xs sm:text-sm uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-2 font-[Outfit] shadow-2xs"
+              >
+                <i className="fa-solid fa-wand-magic-sparkles text-[#15803d]" />
+                <span>AI Meal & Tray Planner</span>
+              </a>
+            </div>
+
+            {/* Trust Metrics Row */}
+            <div className="pt-6 border-t border-slate-200/80 grid grid-cols-3 gap-4 text-center sm:text-left">
+              <div>
+                <p className="text-2xl md:text-3xl font-bold font-serif text-[#0b2b1e]">40X</p>
+                <p className="text-[10px] md:text-xs text-slate-500 font-bold uppercase tracking-wider font-[Outfit]">Microgreen Density</p>
+              </div>
+              <div>
+                <p className="text-2xl md:text-3xl font-bold font-serif text-[#0b2b1e]">10 Min</p>
+                <p className="text-[10px] md:text-xs text-slate-500 font-bold uppercase tracking-wider font-[Outfit]">Ready-to-Cook Prep</p>
+              </div>
+              <div>
+                <p className="text-2xl md:text-3xl font-bold font-serif text-[#0b2b1e]">100%</p>
+                <p className="text-[10px] md:text-xs text-slate-500 font-bold uppercase tracking-wider font-[Outfit]">Airtight & Clean</p>
+              </div>
+            </div>
           </motion.div>
 
-          {/* Main Headline */}
-          <h1 className="mb-6 leading-[1.05] tracking-tight">
-            <span className="block text-[2.8rem] md:text-[6.5rem] lg:text-[8rem] text-[#f5f5f4] font-serif font-light">
-              Nature's Most
-            </span>
-            <span className="block text-[2.8rem] md:text-[6.5rem] lg:text-[8rem] mt-1 md:mt-2">
-              <span className="text-[#52c41a] font-serif italic font-normal">Powerful</span>
-              <span className="text-[#f5f5f4] font-serif font-light"> Food</span>
-            </span>
-          </h1>
-
-          {/* Subheadline */}
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.9 }}
-            className="text-base md:text-xl mb-4 text-[#a8a29e] font-light max-w-3xl mx-auto leading-relaxed"
-          >
-            Microgreens · Alphonso Mangoes · Indian Blackberry — all grown and sourced with{' '}
-            <span className="text-[#a0d911] font-medium">zero compromise</span>.
-          </motion.p>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 1.05 }}
-            className="text-sm text-[#78716c] font-light mb-12 max-w-2xl mx-auto"
-          >
-            Harvested at peak potency. No pesticides. Delivered to your door.
-          </motion.p>
-
-          {/* CTA Buttons */}
+          {/* ── RIGHT COLUMN: Interactive Product Spotlight (5 Cols) ── */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.1 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-5"
           >
-            <a
-              href="#products"
-              className="group relative bg-[#52c41a] hover:bg-[#a0d911] text-[#0a0f0a] px-12 py-5 rounded-full font-bold text-sm uppercase tracking-wider transition-all duration-300 hover:scale-105 shadow-[0_0_50px_rgba(82,196,26,0.4)] flex items-center gap-3 min-w-[230px] justify-center overflow-hidden"
-            >
-              <span className="relative z-10">Shop Fresh</span>
-              <i className="fa-solid fa-arrow-right relative z-10 text-xs group-hover:translate-x-1 transition-transform duration-300" />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#a0d911] to-[#52c41a] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </a>
+            <div className="bg-white rounded-[2rem] p-6 md:p-7 border border-slate-200 shadow-xl relative">
 
-            <a
-              href="#assistant"
-              className="relative bg-transparent border-2 border-[#2d5016] hover:border-[#52c41a] text-[#f5f5f4] px-12 py-5 rounded-full font-semibold text-sm uppercase tracking-wider transition-all duration-300 hover:scale-105 flex items-center gap-3 min-w-[230px] justify-center"
-              style={{ backdropFilter: 'blur(8px)' }}
-            >
-              <i className="fa-solid fa-leaf text-[#52c41a] text-sm" />
-              AI Nutrition Guide
-            </a>
-          </motion.div>
-
-          {/* Social Proof */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 1.3 }}
-            className="mt-16 flex flex-wrap justify-center items-center gap-8 md:gap-12 text-xs text-[#78716c]"
-          >
-            <div className="flex items-center gap-2">
-              <div className="flex -space-x-2">
-                {['from-[#52c41a] to-[#2d5016]', 'from-[#fbbf24] to-[#d97706]', 'from-[#8b5cf6] to-[#6d28d9]'].map((g, i) => (
-                  <div key={i} className={`w-8 h-8 rounded-full bg-gradient-to-br ${g} border-2 border-[#040608]`} />
+              {/* Product Switcher Tabs */}
+              <div className="grid grid-cols-4 gap-1 p-1 bg-slate-100 rounded-full mb-5 text-[10px] sm:text-xs font-bold uppercase tracking-wider font-[Outfit]">
+                {HERO_FEATURED.map((item, idx) => (
+                  <button
+                    key={item.id}
+                    onClick={() => setActiveTab(idx)}
+                    className={`py-2 px-1 rounded-full transition-all duration-300 text-center truncate ${activeTab === idx
+                        ? 'bg-white text-slate-900 shadow-xs'
+                        : 'text-slate-500 hover:text-slate-800'
+                      }`}
+                  >
+                    {item.tabLabel}
+                  </button>
                 ))}
               </div>
-              <span className="font-medium text-[#a8a29e]">2,500+ Happy Customers</span>
-            </div>
 
-            <div className="flex items-center gap-2">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <i key={i} className="fa-solid fa-star text-[#d4af37]" />
-              ))}
-              <span className="ml-1 font-medium text-[#a8a29e]">4.9 / 5</span>
-            </div>
+              {/* Status Badge */}
+              <div className="flex justify-between items-center mb-3">
+                <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider border ${featured.badgeBg} font-[Outfit]`}>
+                  {featured.badge}
+                </span>
+                <span className="text-xs text-emerald-700 font-bold font-[Outfit]">Available Now</span>
+              </div>
 
-            <div className="flex items-center gap-2">
-              <i className="fa-solid fa-shield-halved text-[#52c41a]" />
-              <span className="font-medium text-[#a8a29e]">FSSAI Certified</span>
+              {/* Featured Image Container */}
+              <div className="relative h-52 sm:h-60 rounded-2xl bg-slate-50/80 flex items-center justify-center p-3 mb-5 border border-slate-100 overflow-hidden">
+                <motion.img
+                  key={featured.id}
+                  initial={{ scale: 0.85, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.35 }}
+                  src={featured.image}
+                  alt={featured.name}
+                  className="max-h-full w-full object-contain rounded-xl"
+                  style={{ filter: 'drop-shadow(0 10px 20px rgba(0,0,0,0.08))' }}
+                />
+              </div>
+
+              {/* Product Details */}
+              <div className="mb-5">
+                <div className="flex justify-between items-baseline mb-2">
+                  <h3 className="text-lg sm:text-xl font-bold text-slate-900 font-[Outfit] leading-tight pr-2">
+                    {featured.name}
+                  </h3>
+                  <div className="text-right whitespace-nowrap">
+                    <span className="text-2xl font-bold text-slate-900 font-serif">{featured.price}</span>
+                    <span className="text-[11px] text-slate-500 block font-normal">{featured.unit}</span>
+                  </div>
+                </div>
+
+                <p className="text-xs text-slate-600 leading-relaxed mb-3">
+                  {featured.containerInfo}
+                </p>
+
+                {/* Meta pills */}
+                <div className="flex flex-wrap gap-1.5">
+                  {featured.meta.map(tag => (
+                    <span key={tag} className="px-2 py-0.5 rounded-md bg-slate-100 text-slate-600 text-[10px] font-semibold font-[Outfit]">
+                      ✓ {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Direct WhatsApp Action */}
+              <a
+                href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+                  `Hi Prakriti Greens! I want to order:\n- ${featured.name} (${featured.unit}) @ ${featured.price}\nPlease confirm availability and dispatch!`
+                )}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`w-full py-3.5 rounded-full font-bold text-xs uppercase tracking-wider flex items-center justify-center gap-2.5 transition-all duration-300 shadow-sm font-[Outfit] ${featured.btnBg}`}
+              >
+                <i className="fa-brands fa-whatsapp text-base" />
+                <span>Order Packed Container on WhatsApp</span>
+              </a>
+
+
             </div>
           </motion.div>
-        </motion.div>
+
+        </div>
       </div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.5 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
-      >
-        <span className="text-[#52c41a]/50 text-[9px] tracking-[0.4em] font-semibold uppercase">Scroll to Explore</span>
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
-          className="w-[1px] h-16 bg-gradient-to-b from-[#52c41a]/60 via-[#52c41a]/20 to-transparent"
-        />
-      </motion.div>
-
-      {/* Ambient glows */}
-      <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] rounded-full blur-[150px] pointer-events-none opacity-[0.08]"
-        style={{ background: 'radial-gradient(circle, #52c41a, transparent)' }} />
-      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full blur-[120px] pointer-events-none opacity-[0.07]"
-        style={{ background: 'radial-gradient(circle, #fbbf24, transparent)' }} />
-      <div className="absolute top-1/4 right-1/3 w-[350px] h-[350px] rounded-full blur-[100px] pointer-events-none opacity-[0.06]"
-        style={{ background: 'radial-gradient(circle, #8b5cf6, transparent)' }} />
     </section>
   );
 };

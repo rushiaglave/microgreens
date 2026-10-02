@@ -1,7 +1,10 @@
-/* Custom global styling for Prakriti Greens & Naturals */
+/* ═══════════════════════════════════════════════════════════
+   Prakriti Greens & Naturals — Global Stylesheet
+   ═══════════════════════════════════════════════════════════ */
 
 html {
   scroll-behavior: smooth;
+  font-size: 16px;
 }
 
 body {
@@ -10,7 +13,7 @@ body {
   box-sizing: border-box;
 }
 
-/* Custom glow animations and keyframes */
+/* ── Custom glow animations and keyframes ──────────────── */
 @keyframes float {
   0% { transform: translateY(0px) rotate(0deg); }
   50% { transform: translateY(-10px) rotate(2deg); }
@@ -19,4 +22,96 @@ body {
 
 .floating-element {
   animation: float 6s ease-in-out infinite;
+}
+
+/* ── Frosted Glass & Glassmorphism Utilities ───────────── */
+.frosted-glass {
+  background: rgba(255, 255, 255, 0.68) !important;
+  backdrop-filter: blur(28px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.75) !important;
+  box-shadow: 0 20px 50px -12px rgba(11, 43, 30, 0.08), inset 0 1px 1px 0 rgba(255, 255, 255, 0.9) !important;
+}
+
+.frosted-glass-emerald {
+  background: linear-gradient(135deg, rgba(209, 250, 229, 0.55), rgba(255, 255, 255, 0.7)) !important;
+  backdrop-filter: blur(28px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
+  border: 1px solid rgba(167, 243, 208, 0.8) !important;
+  box-shadow: 0 20px 50px -12px rgba(21, 128, 61, 0.12), inset 0 1px 2px 0 rgba(255, 255, 255, 0.95) !important;
+}
+
+.frosted-glass-inner {
+  background: rgba(255, 255, 255, 0.55) !important;
+  backdrop-filter: blur(16px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.75) !important;
+}
+
+.frosted-glass-chip {
+  background: rgba(255, 255, 255, 0.6) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+}
+
+
+/* ── Responsive font scaling ───────────────────────────── */
+@media (max-width: 480px) {
+  html { font-size: 14px; }
+}
+
+/* ── Better image rendering ────────────────────────────── */
+img {
+  image-rendering: auto;
+  -webkit-user-drag: none;
+}
+
+/* ── Focus styles for accessibility ────────────────────── */
+*:focus-visible {
+  outline: 2px solid #15803d;
+  outline-offset: 2px;
+}
+
+/* ── Prevent text overflow ─────────────────────────────── */
+h1, h2, h3, h4, h5, h6, p {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+/* ── Section spacing mobile override ───────────────────── */
+@media (max-width: 768px) {
+  section {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+  .py-32 {
+    padding-top: 3rem !important;
+    padding-bottom: 3rem !important;
+  }
+  .py-40 {
+    padding-top: 4rem !important;
+    padding-bottom: 4rem !important;
+  }
+}
+
+/* ── Better form inputs on mobile ──────────────────────── */
+@media (max-width: 768px) {
+  input, textarea, select {
+    font-size: 16px !important; /* Prevent iOS zoom */
+  }
+}
+
+/* ── Animation reduced motion preference ───────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ── Smooth image transitions ──────────────────────────── */
+img {
+  transition: opacity 0.3s ease;
 }
