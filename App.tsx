@@ -95,7 +95,7 @@ const HomePage: React.FC<{ showAnnouncement: boolean }> = ({ showAnnouncement })
       <section id="science" className="py-20 md:py-32 bg-white border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-            
+
             {/* Left Big Impact Banner (5 Cols) */}
             <motion.div
               initial="hidden"
@@ -235,7 +235,7 @@ const HomePage: React.FC<{ showAnnouncement: boolean }> = ({ showAnnouncement })
       <section id="ethos" className="py-20 md:py-32 bg-[#f4f3ee] border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
-            
+
             {/* Left Farm Visual */}
             <motion.div
               whileInView={{ opacity: 1, x: 0 }}
@@ -290,11 +290,10 @@ const HomePage: React.FC<{ showAnnouncement: boolean }> = ({ showAnnouncement })
                   <button
                     key={tab.id}
                     onClick={() => setActiveSeasonTab(tab.id as any)}
-                    className={`flex-1 py-2.5 px-3 rounded-full transition-all duration-300 ${
-                      activeSeasonTab === tab.id
-                        ? 'bg-white text-slate-900 shadow-xs'
-                        : 'text-slate-600 hover:text-slate-900'
-                    }`}
+                    className={`flex-1 py-2.5 px-3 rounded-full transition-all duration-300 ${activeSeasonTab === tab.id
+                      ? 'bg-white text-slate-900 shadow-xs'
+                      : 'text-slate-600 hover:text-slate-900'
+                      }`}
                   >
                     {tab.label}
                   </button>
@@ -528,13 +527,15 @@ const App: React.FC = () => {
                 <p className="text-xs uppercase tracking-widest text-[#22c55e] font-bold mb-3 md:mb-4 font-[Outfit]">Connect</p>
                 <div className="flex gap-3 mb-4">
                   {[
-                    { icon: 'fa-brands fa-instagram', bg: 'linear-gradient(135deg, #f09433, #dc2743, #bc1888)' },
-                    { icon: 'fa-brands fa-whatsapp', bg: '#25D366' },
-                    { icon: 'fa-brands fa-facebook', bg: '#1877F2' },
+                    { icon: 'fa-brands fa-instagram', bg: 'linear-gradient(135deg, #f09433, #dc2743, #bc1888)', href: 'https://www.instagram.com/prakriti__greens/' },
+                    { icon: 'fa-brands fa-whatsapp', bg: '#25D366', href: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hi Prakriti Greens! I want to konw more about your products.')}` },
+                    // { icon: 'fa-brands fa-facebook', bg: '#1877F2', href: '#' },
                   ].map((s, i) => (
                     <a
                       key={i}
-                      href="#"
+                      href={s.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm transition-all duration-300 hover:scale-110 hover:shadow-lg"
                       style={{ background: s.bg }}
                     >
@@ -543,7 +544,7 @@ const App: React.FC = () => {
                   ))}
                 </div>
 
-                <a
+                {/* <a
                   href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hi Prakriti Greens! I want to order Microgreens and Cut Vegetable Containers.')}`}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -552,7 +553,7 @@ const App: React.FC = () => {
                 >
                   <i className="fa-brands fa-whatsapp text-sm" />
                   Order on WhatsApp ({DISPLAY_PHONE})
-                </a>
+                </a> */}
               </div>
             </div>
 

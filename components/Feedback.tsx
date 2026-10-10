@@ -115,8 +115,8 @@ const Feedback: React.FC = () => {
                   type="button"
                   onClick={() => setSelectedTopic(topic.label)}
                   className={`px-3.5 py-2 rounded-full text-xs font-semibold font-[Outfit] transition-all duration-200 border flex items-center gap-1.5 ${selectedTopic === topic.label
-                      ? 'bg-emerald-100 text-[#15803d] border-emerald-300 shadow-2xs font-bold'
-                      : 'bg-slate-50 text-slate-600 border-slate-200 hover:border-slate-300 hover:bg-slate-100'
+                    ? 'bg-emerald-100 text-[#15803d] border-emerald-300 shadow-2xs font-bold'
+                    : 'bg-slate-50 text-slate-600 border-slate-200 hover:border-slate-300 hover:bg-slate-100'
                     }`}
                 >
                   <span>{topic.label}</span>
@@ -160,7 +160,7 @@ const Feedback: React.FC = () => {
               className="w-full sm:flex-1 py-4 rounded-full font-bold text-sm uppercase tracking-wider flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#20ba5c] text-white shadow-md hover:shadow-lg transition-all duration-300 font-[Outfit]"
             >
               <i className="fa-brands fa-whatsapp text-xl" />
-              <span>Send Feedback on WhatsApp ({DISPLAY_PHONE})</span>
+              <span>Send Feedback</span>
             </a>
 
             <a

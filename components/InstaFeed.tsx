@@ -193,7 +193,7 @@ const InstaFeed: React.FC = () => {
           className="text-center mt-10 md:mt-14"
         >
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com/prakriti__greens/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 md:gap-3 px-6 md:px-8 py-3.5 md:py-4 rounded-full font-bold text-xs md:text-sm uppercase tracking-wider transition-all duration-300 hover:scale-105 font-[Outfit]"
@@ -204,7 +204,7 @@ const InstaFeed: React.FC = () => {
             }}
           >
             <i className="fa-brands fa-instagram text-sm md:text-base" />
-            Follow @prakritigreens
+            Follow @prakriti__greens
           </a>
         </motion.div>
       </div>
